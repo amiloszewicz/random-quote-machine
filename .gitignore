@@ -4,3 +4,6 @@ node_modules/
 # production
 dist/
 
+# jQuery code version
+src/old/
+
