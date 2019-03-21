@@ -5,7 +5,6 @@ import QuoteText from './QuoteText/QuoteText.js';
 
 class Quote extends Component {
   render() {
-    console.log(this.props.quote);
     return (
       <div>
         <QuoteText quoteText={this.props.quote.text} />

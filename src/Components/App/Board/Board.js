@@ -21,7 +21,6 @@ class Board extends Component {
 
   newQuote = () => {
     const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    console.log(newQuote);
 
     this.setState({
       quote: {
@@ -33,10 +32,10 @@ class Board extends Component {
 
   render() {
     return (
-      <div className='quote-box'>
+      <div id='quote-box'>
        <Quote quote={this.state.quote} />
-       <TumblrButton />
-       <TwitterButton />
+       <TumblrButton quote={this.state.quote} />
+       <TwitterButton quote={this.state.quote} />
        <NewQuoteButton changeQuote={this.newQuote} />
       </div>
     );
