@@ -1,46 +1,39 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Quote from './Quote/Quote.js';
-import NewQuoteButton from './Buttons/NewQuoteButton.js';
-import TumblrButton from './Buttons/TumblrButton.js';
-import TwitterButton from './Buttons/TwitterButton.js';
+import Quote from '../Quote';
+import NewQuoteButton from '../Buttons/NewQuoteButton';
+import TumblrButton from '../Buttons/TumblrButton';
+import TwitterButton from '../Buttons/TwitterButton';
 
 import { quotes } from '../Quotes.js';
 
-class Board extends Component {
-  state = {
-    quote: {
-      text: '',
-      author: ''
-    }
+const Board = () => {
+
+  const [ quote, setQuoteText ] = useState('');
+  const [ author, setQuoteAuthor ] = useState('');
+
+  const setQuote = () => {
+    console.log('dupa');
+    const { quote, author } = quotes[Math.floor(Math.random() * quotes.length)];
+    console.log(quote, author);
+
+    setQuoteText(quote);
+    setQuoteAuthor(author);
   };
 
-  componentWillMount() {
-    this.newQuote();
-  }
+  useEffect(setQuote, [quote, author]);
 
-  newQuote = () => {
-    const newQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  const newQuote = { quote, author };
+  const href = 'abc';
 
-    this.setState({
-      quote: {
-        text: newQuote.quote,
-        author: newQuote.author
-      }
-    })
-  };
-
-  render() {
-    return (
-      <div id='quote-box'>
-       <Quote quote={this.state.quote} />
-       <TumblrButton quote={this.state.quote} />
-       <TwitterButton quote={this.state.quote} />
-       <NewQuoteButton changeQuote={this.newQuote} />
-      </div>
-    );
-  }
+  return (
+    <div id='quote-box'>
+      <Quote quote={newQuote} />
+      <TumblrButton quote={{ newQuote, href }} />
+      <TwitterButton quote={newQuote} />
+      <NewQuoteButton changeQuote={setQuote} />
+    </div>
+  );
 }
 
 export default Board;
-

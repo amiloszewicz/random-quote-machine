@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-import Author from './Author/Author.js';
-import Board from './Board/Board.js';
+import Author from './AppAuthor';
+import Board from './Board';
 
-class App extends Component {
-  render() {
-    const aplicationAuthor = {
-      name: 'adam',
-      surname: 'miloszewicz'
-    };
+const App = () => {
+  const aplicationAuthor = {
+    name: 'adam',
+    surname: 'miloszewicz'
+  };
 
-    return (
-      <>
-        <Board />
-        <Author aplicationAuthor={aplicationAuthor} />
-      </>
-    );
-  }
+  return (
+    <>
+      <Board />
+      <Author aplicationAuthor={aplicationAuthor} />
+    </>
+  );
 }
 
 export default App;
