@@ -1,8 +1,8 @@
 import React from 'react';
 
-const QuoteAuthor = ({ quote }) => (
+const QuoteAuthor = ({ quoteAuthor }) => (
   <div id='author'>
-    <p>{quote}</p>
+    <p>{quoteAuthor}</p>
   </div>
 );
 

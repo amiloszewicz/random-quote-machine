@@ -8,30 +8,21 @@ import TwitterButton from '../Buttons/TwitterButton';
 import { quotes } from '../Quotes.js';
 
 const Board = () => {
-
-  const [ quote, setQuoteText ] = useState('');
-  const [ author, setQuoteAuthor ] = useState('');
-
-  const setQuote = () => {
-    console.log('dupa');
-    const { quote, author } = quotes[Math.floor(Math.random() * quotes.length)];
-    console.log(quote, author);
-
-    setQuoteText(quote);
-    setQuoteAuthor(author);
-  };
-
-  useEffect(setQuote, [quote, author]);
-
-  const newQuote = { quote, author };
+  const [activeQuote, setActiveQuote] = useState(0);
   const href = 'abc';
+
+  const randomQuote = e => {
+    const len = quotes.length;
+
+    setActiveQuote(Math.round(Math.random() * len));
+  }
 
   return (
     <div id='quote-box'>
-      <Quote quote={newQuote} />
-      <TumblrButton quote={{ newQuote, href }} />
-      <TwitterButton quote={newQuote} />
-      <NewQuoteButton changeQuote={setQuote} />
+      <Quote activeQuote={quotes[activeQuote]} />
+      <TumblrButton activeQuote={quotes[activeQuote]} />
+      <TwitterButton activeQuote={quotes[activeQuote]} />
+      <NewQuoteButton changeQuote={randomQuote} />
     </div>
   );
 }

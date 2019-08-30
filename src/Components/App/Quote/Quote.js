@@ -3,11 +3,11 @@ import React from 'react';
 import QuoteAuthor from './Author';
 import QuoteText from './Text';
 
-const Quote = ({ text, author }) => {
+const Quote = ({ activeQuote }) => {
   return (
     <>
-      <QuoteText quoteText={text} />
-      <QuoteAuthor quoteAuthor={author} />
+      <QuoteText quoteText={activeQuote.quote} />
+      <QuoteAuthor quoteAuthor={activeQuote.author} />
     </>
   );
 }
